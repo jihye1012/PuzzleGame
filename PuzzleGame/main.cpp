@@ -58,7 +58,17 @@ int main(void)
                     grid[y][x] = 16;
                     grid[y + dy][x + dx] = temp;
 
-                    
+                    //애니메이션
+                    sprite[16].move(-dx * (float)w, -dy * (float)w);
+                    float speed = 4.f;
+
+                    for (int i = 0; i < w; i += (int)speed)
+                    {
+                        sprite[temp].move(speed * dx, speed * dy);
+                        app.draw(sprite[16]);
+                        app.draw(sprite[temp]);
+                        app.display();
+                    }
                 }
             }
         }
@@ -67,7 +77,7 @@ int main(void)
         {
             for (int j = 0; j < 4; j++)
             {
-                //해ㅐ당 행렬에 있는 숫다 가지도 오기
+                //해당 행렬에 있는 숫다 가지도 오기
                 int n = grid[i + 1][j + 1];
 
                 sprite[n].setPosition(j * w, i * w);
